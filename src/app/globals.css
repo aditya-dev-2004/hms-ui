@@ -1,0 +1,152 @@
+body{
+    font-family: Roboto, sans-serif;
+}
+
+.top{
+    min-height: 60px;
+    background-color: #223a66;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.banner{
+    min-height: 600px;
+    background: url(/bg/slider-bg-1.jpg);
+    background-size: 100% 100%;
+}
+
+.strip{
+    height: 5px; 
+    width:40px;
+    background-color: #e12454;
+}
+
+.health{
+    color: rgb(111, 139, 164);
+    font-size: 16px;
+}
+
+.banner-heading{
+    font-size: 60px;
+    color:rgb(111, 139, 164);
+}
+.my-color1{
+    color:rgb(111, 139, 164) !important;
+}
+.my-color2{
+    color: #223a66 !important;
+}
+.my-btn-hover:hover{
+    background: #223a66 !important;
+    transition: all 1s;
+}
+.mybtn-color1{
+    background: #223a66 !important;
+    color:white !important;
+}
+
+.mybtn-color1:hover{
+    background: #e12454 !important;
+    transition: all 1s;
+}
+
+.a{
+    transform: translateY(-50px);
+}
+.b{
+    height: 98%; width: 98%;
+    background-color: yellow;
+}
+.title1{
+    font-size: 18px;
+}
+
+.personal-care
+{
+    text-align: center;
+    position: relative;
+  
+
+}
+.personal-care .ic{
+position: absolute;
+top:2%; left:39%; 
+font-size: 70px;
+color: rgba(255, 255, 255, 0.2);;
+}
+.personal-care .overlay{
+    background: rgba(43, 66, 108, 1);
+    min-height: 200px;
+    padding: 60px 0px 40px 0px;
+    z-index: 100;
+    color: white;
+
+}
+.overlay span{
+    font-size: 70px;
+    font-weight:700;
+}
+
+.overlay p{
+    color:rgba(255, 255, 255, 0.7);
+    font-size: 18px;
+}
+
+.wrapper-ic-container{
+    font-size: 50px;
+    color: #e12454;
+}
+
+.icon-container .icon{
+    height: 40px;
+    width: 40px;
+    background-color: rgb(111, 139, 164);
+    color: white;
+    line-height: 35px;
+    text-align: center;
+    border-radius: 50%;  
+}
+
+.nav-link-hover:hover{
+    color: #e12454 !important;
+}
+
+.booking-img{
+    position: relative;
+    height: 90%; width:90%;
+}
+/* .booking-img img{
+    height: 95%;
+} */
+
+.booking-div{
+    position: absolute;
+    top: 79%;
+    background-color: rgba(43, 66, 108, 1);
+    width: 110%;
+    color: white;
+    font-size: 55px;
+}
+
+.my-height{
+    height: 60px !important;
+    font-size: 18px !important;
+}
+
+.feed-wrap-img{
+    height: 100px;
+    width: 100px;
+}
+.feed-wrap-img img{
+    height: 100%;
+    width: 100%;
+}
+
+.feed-icon-container
+{
+    position: absolute;
+    color: rgba(225, 36, 84, 0.4);
+    font-size: 85px;
+    top: 73%;
+    right: 10%;
+}
