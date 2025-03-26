@@ -1,12 +1,13 @@
 "use client"
 import React from 'react'
 import "bootstrap/dist/js/bootstrap.bundle.js"
+import Link from 'next/link'
 
 const Navbar = () => {
   const nav=[{
     liClass:"nav-item px-2 fw-semibold",
     aClass:"nav-link",
-    href:"#",
+    href:"/",
     name:"Home"
   },
   {
@@ -96,10 +97,10 @@ const Navbar = () => {
         
        {nav?.map((items)=>{
         return(<>
-        <li className={` ${items.liClass}`}>
-          <a className={` ${items.aClass}`}  href={` ${items.href}`}>
+        <li className={items.liClass}>
+          <Link className={items.aClass}  href={items.href}>
             {items.name}
-          </a>
+          </Link>
         </li>
         </>)
        })}

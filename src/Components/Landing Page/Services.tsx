@@ -13,8 +13,8 @@ const Services = () => {
       <div className="row bg-light pt-5">
         <div className="col-md-10 mx-auto">
           <div className="row">
-            <div className="col-lg-4 col-md-6 col-sm-6 mb-5" style={{minHeight:"280px"}}>
-            <div className='py-4 px-5 shadow rounded-3 mx-auto' style={{minHeight:"100%", width:"95%" }}>
+            <div className="col-lg-4 col-md-6 col-sm-6 mb-5" >
+            <div className='py-4 px-5 ser shadow rounded-3 mx-auto'>
             <div className="wrapper d-flex mb-3 ">
                 <div className="wrapper-ic-container w-25 ">
                   <IoFlaskSharp/>

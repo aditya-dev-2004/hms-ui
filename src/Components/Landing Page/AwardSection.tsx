@@ -11,7 +11,7 @@ const AwardSection = () => {
             <h1 className='my-color2 text-center'>Award Winning Patient Care</h1>
             <br />
         <div className='strip mb-4 mx-auto'></div>
-        <p className='text-center my-color1' style={{fontSize:"18px",lineHeight:"33px"}}>Lets know moreel necessitatibus dolor asperiores illum possimus sint voluptates incidunt molestias nostrum laudantium. Maiores porro cumque quaerat.</p>
+        <p className='text-center my-color1 awp' >Lets know moreel necessitatibus dolor asperiores illum possimus sint voluptates incidunt molestias nostrum laudantium. Maiores porro cumque quaerat.</p>
             </div>
           </div>
         </div>

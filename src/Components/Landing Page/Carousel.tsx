@@ -17,7 +17,7 @@ const Carousel = () => {
           </p>
         </div>
         <div className='my-3'>
-          <button className='my-btn-hover btn btn-danger py-2 px-4  rounded-pill' style={{fontSize:"15px", fontWeight:"600"}}>
+          <button className='my-btn-hover btn btn-danger py-3 px-4 fw-semibold rounded-pill' >
             MAKE APPOINMENT &nbsp;&nbsp;&nbsp; &gt;
           </button>
         </div>
@@ -27,7 +27,7 @@ const Carousel = () => {
       </div>
       <div className="row a">
         <div className="col-md-10 mx-auto ">
-          <div className="row" style={{minHeight:"300px"}}>
+          <div className="row" >
             <div className="col-lg-4 mb-4  ">
               <div className="b shadow-lg mx-auto my-auto bg-light rounded-4 px-5 py-4">
                 <div className="icon-container my-3">
@@ -37,7 +37,7 @@ const Carousel = () => {
                 </div>
                 <span className='title1 my-color1'>24 Hours Service</span>
                 <h4 className='my-color2 mb-3'>Online Appoinment</h4>
-                <p className='my-color1 mb-3 text-justify' style={{lineHeight:"30px"}}>
+                <p className='my-color1 mb-3 text-justify'>
                 Get ALl time support for emergency. We have introduced the principle of family medicine.
                 </p>
                 <button className='btn px-4 mb-3 py-2 mybtn-color1 rounded-pill'>Make Appoinment</button>

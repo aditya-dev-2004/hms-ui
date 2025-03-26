@@ -3,6 +3,7 @@ import React from 'react'
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
+import Link from 'next/link';
 
 const schema = yup
   .object()
@@ -23,7 +24,7 @@ const UserLogin = () => {
         <form onSubmit={handleSubmit((d)=>console.log(d))}>
        
        <div className='mb-4'>
-       <select {...register("userType")} className='form-select mb-4 text-light mt-1 rounded-0 ps-0' style={{background:"transparent",border:"none", borderBottom:"1px solid white"}}>
+       <select {...register("userType")} className='form-select myform-select mb-4 text-light mt-1 rounded-0 ps-0' >
             
             <option className='t'  value="admin" >Admin</option>
             <option className='t'  value="doctor">Doctor</option>
@@ -40,6 +41,14 @@ const UserLogin = () => {
        <div className='mb-4'>
        <input {...register("password")} className='myform-control form-control ps-0 text-light rounded-0 mt-1' placeholder='Enter your password' type="password" id="password"/>
         {errors.password &&  <div className="text-danger fw-bold ">{errors.password?.message}</div>}
+       </div>
+       <div className="forget-reset-wrap d-flex justify-content-between ">
+        <div className="forget-div text-start">
+          <Link href="/forget-password"> Forget Password!</Link>
+           </div>
+        <div className="reset-div text-end">
+          <Link href="/reset-password">Reset Password!</Link>
+           </div>
        </div>
         <input type="submit" value="Login" className='w-100 mx-auto d-block text-light my-btn-hover1 btn mt-4 btn my-bg-color1'/>
     </form>

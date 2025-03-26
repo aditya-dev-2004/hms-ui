@@ -204,3 +204,14 @@ color: rgba(255, 255, 255, 0.2);;
  ::placeholder{
     color:white !important;
 }
+
+.myform-select{
+    background:transparent !important;border:none !important;border-bottom:1px solid white !important;
+}
+.awp{
+    font-size:18px;line-height:33px
+}
+
+.ser{
+    min-height:100%; width:95% 
+}

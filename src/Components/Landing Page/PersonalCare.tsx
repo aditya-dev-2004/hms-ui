@@ -22,8 +22,8 @@ const PersonalCare = () => {
             <div className="col-lg-4 px-4 d-flex align-items-center ">
              <div>
              <h1 className='my-color2 my-3'>Personal care & healthy living</h1>
-              <p className='my-color1 my-2' style={{lineHeight:"30px"}}>We provide best leading medicle service Nulla perferendis veniam deleniti ipsum official <br /> dolores repellat laudantium obcaecati neque.</p>
-              <button className='my-btn-hover btn btn-danger my-5 py-2 px-4  rounded-pill' style={{fontSize:"15px", fontWeight:"600"}}>
+              <p className='my-color1 my-2 awp' >We provide best leading medicle service Nulla perferendis veniam deleniti ipsum official <br /> dolores repellat laudantium obcaecati neque.</p>
+              <button className='my-btn-hover btn btn-danger my-5 py-3 fw-semibold px-4  rounded-pill'>
             SERVICES &nbsp;&nbsp;&nbsp; &gt;
           </button>
              </div>

@@ -16,7 +16,7 @@ const FooterSection = () => {
                 <img src="/logo.png" alt="" />
               </div>
               <div className="description my-3">
-                <p className='my-color1 fs-5' style={{lineHeight:"35px"}}>Tempora dolorem voluptatum nam vero assumenda voluptate, facilis ad eos obcaecati tenetur veritatis eveniet distinctio possimus.</p>
+                <p className='my-color1 fs-5 awp' >Tempora dolorem voluptatum nam vero assumenda voluptate, facilis ad eos obcaecati tenetur veritatis eveniet distinctio possimus.</p>
               </div>
               <div className="icon-container mt-4 mb-3 d-flex">
                 <div className="icon ">

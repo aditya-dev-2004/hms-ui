@@ -15,8 +15,8 @@ const Booking = () => {
               </div>
             </div>
             <div className="col-lg-7 px-5 py-5">
-              <h1 className='my-color2 mb-4' style={{fontSize:"55px"}}>Book appoinment</h1>
-              <p className='my-color1 mb-3' style={{fontSize:"20px",lineHeight:"33px"}}> Mollitia dicta commodi est recusandae iste, natus eum asperiores corrupti qui velit. Iste dolorum atque similique praesentium soluta.</p>
+              <h1 className='my-color2 mb-4 fs-1' >Book appoinment</h1>
+              <p className='my-color1 mb-3 awp' > Mollitia dicta commodi est recusandae iste, natus eum asperiores corrupti qui velit. Iste dolorum atque similique praesentium soluta.</p>
               <div className='row '>
                 <div className="col-md-6 mb-4">
                     <select className='form-select bg-light my-height rounded-0'>
