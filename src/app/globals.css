@@ -2,6 +2,14 @@ body{
     font-family: Roboto, sans-serif;
 }
 
+.my-bg-color1{
+background-color: rgb(111, 139, 164) !important;
+}
+
+.my-bg-color2{
+    background-color: rgba(34, 58, 102,0.8) !important;
+}
+
 .top{
     min-height: 60px;
     background-color: #223a66;
@@ -36,10 +44,19 @@ body{
 .my-color2{
     color: #223a66 !important;
 }
+.my-color3{
+    color:#e12454 !important;
+}
 .my-btn-hover:hover{
     background: #223a66 !important;
     transition: all 1s;
 }
+
+.my-btn-hover1:hover{
+    background: #e12454 !important;
+    transition: all 1s;
+}
+
 .mybtn-color1{
     background: #223a66 !important;
     color:white !important;
@@ -65,8 +82,6 @@ body{
 {
     text-align: center;
     position: relative;
-  
-
 }
 .personal-care .ic{
 position: absolute;
@@ -149,4 +164,43 @@ color: rgba(255, 255, 255, 0.2);;
     font-size: 85px;
     top: 73%;
     right: 10%;
+}
+
+.subs{
+    height: 70px;
+    position: relative;
+}
+.subs input{
+    height: 100% !important;
+}
+.subs button{
+    position: absolute;
+    right: 6px;
+    top: 6px;
+}
+
+.login-row{
+    min-height: 60vh !important;
+}
+
+.login-row .col-md-4{
+    
+    min-height: 100px !important;
+    backdrop-filter: blur(3px);
+   
+}
+
+.myform-control{
+    background-color: transparent !important ;
+    border: none !important;
+    border-bottom: 1px solid white !important ;
+    color:white;
+   
+}
+.t{
+    color: black !important;
+}
+
+ ::placeholder{
+    color:white !important;
 }

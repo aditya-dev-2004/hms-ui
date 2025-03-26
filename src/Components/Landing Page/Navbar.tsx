@@ -3,6 +3,62 @@ import React from 'react'
 import "bootstrap/dist/js/bootstrap.bundle.js"
 
 const Navbar = () => {
+  const nav=[{
+    liClass:"nav-item px-2 fw-semibold",
+    aClass:"nav-link",
+    href:"#",
+    name:"Home"
+  },
+  {
+    liClass:"nav-item px-2 fw-semibold",
+    aClass:"nav-link",
+    href:"#",
+    name:"About"
+  },
+  {
+    liClass:"nav-item px-2 fw-semibold",
+    aClass:"nav-link",
+    href:"#",
+    name:"Services"
+  },
+  {
+    liClass:"nav-item px-2 fw-semibold",
+    aClass:"nav-link",
+    href:"#",
+     name:"Department"
+  },
+  {
+    liClass:"nav-item px-2 fw-semibold",
+    aClass:"nav-link",
+    href:"#",
+     name:"Doctor"
+  },
+  {
+    liClass:"nav-item px-2 fw-semibold",
+    aClass:"nav-link",
+    href:"#",
+     name:"Blog"
+  },
+  {
+    liClass:"nav-item px-2 fw-semibold",
+    aClass:"nav-link",
+    href:"#",
+     name:"Contact"
+  },
+  {
+    liClass:"nav-item px-2 fw-semibold",
+    aClass:"nav-link",
+    href:"/login",
+     name:"Login"
+  },
+  {
+    liClass:"nav-item px-2 fw-semibold",
+    aClass:"nav-link",
+    href:"/register",
+     name:"Register"
+  },
+
+]
   return (
     <>
     <div className="row top">
@@ -14,8 +70,6 @@ const Navbar = () => {
           </div>
           <div className="col-lg-4 top d-flex align-items-center text-light">Call Now : <span className='fs-4'> 823-4565-13456</span></div>
         </div>
-
-
       </div>
     </div>
     <div className="row for">
@@ -39,41 +93,16 @@ const Navbar = () => {
     </button>
     <div className="collapse navbar-collapse" id="navbarNav">
       <ul className="navbar-nav mx-auto">
-        <li className="nav-item  px-2 fw-semibold">
-          <a className="nav-link " aria-current="page" href="#">
-            Home
+        
+       {nav?.map((items)=>{
+        return(<>
+        <li className={` ${items.liClass}`}>
+          <a className={` ${items.aClass}`}  href={` ${items.href}`}>
+            {items.name}
           </a>
         </li>
-        <li className="nav-item  px-2 fw-semibold">
-          <a className="nav-link" href="#">
-            About
-          </a>
-        </li>
-        <li className="nav-item px-2 fw-semibold">
-          <a className="nav-link" href="#">
-            Services
-          </a>
-        </li>
-        <li className="nav-item px-2 fw-semibold">
-          <a className="nav-link" href="#">
-            Department
-          </a>
-        </li>
-        <li className="nav-item px-2 fw-semibold">
-          <a className="nav-link" href="#">
-            Doctor
-          </a>
-        </li>
-        <li className="nav-item px-2 fw-semibold ">
-          <a className="nav-link" href="#">
-            Blog
-          </a>
-        </li>
-        <li className="nav-item px-2 fw-semibold">
-          <a className="nav-link" href="#">
-            Contact
-          </a>
-        </li>
+        </>)
+       })}
       </ul>
     </div>
   </div>
