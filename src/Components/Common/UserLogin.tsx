@@ -3,8 +3,9 @@ import React from 'react'
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import Link from 'next/link';
-
+import Link from 'next/link'; 
+import { userAuthLogin } from '@/Services'; 
+import { swalFire } from '@/Helpers/SwalFire'; 
 const schema = yup
   .object()
   .shape({
@@ -15,13 +16,22 @@ const schema = yup
 const UserLogin = () => {
   const { register, handleSubmit, formState:{errors} } = useForm({
     resolver: yupResolver(schema),
-  });
+  }); 
+  
+  const LoginFunction=async(data:any)=>{
+    const res=await userAuthLogin(data)
+    if(res?.code==200){
+      swalFire("Auth",res.message,"success") 
+    }else{  
+      swalFire("Auth",res.message,"error")
+    } 
+  }
   return (
     <>
     <div className="row login-row px-3 my-bg-color1">
       <div className="col-md-4 mx-auto my-bg-color2 text-light my-5 rounded-3  p-5">
         <h2 className='my-color3 mb-4 fw-bold text-center'>Login</h2>
-        <form onSubmit={handleSubmit((d)=>console.log(d))}>
+        <form onSubmit={handleSubmit((d)=>LoginFunction(d))}>
        
        <div className='mb-4'>
        <select {...register("userType")} className='form-select myform-select mb-4 text-light mt-1 rounded-0 ps-0' >
