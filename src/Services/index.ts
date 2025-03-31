@@ -5,4 +5,8 @@ export const userAuthLogin=async(payload:any)=>{
     const response=await axios.post(`http://localhost:9000/v1/api/login`,payload);
     return response?.data
    }
-
+   
+   export const userAuthRegister=async(payload:any)=>{
+    const response=await axios.post(`http://localhost:9000/v1/api/register`,payload);
+    return response?.data
+   }
