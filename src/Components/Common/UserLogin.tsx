@@ -20,6 +20,8 @@ const UserLogin = () => {
   
   const LoginFunction=async(data:any)=>{
     const res=await userAuthLogin(data)
+    console.log(res);
+    
     if(res?.code==200){
       swalFire("Auth",res.message,"success") 
     }else{  

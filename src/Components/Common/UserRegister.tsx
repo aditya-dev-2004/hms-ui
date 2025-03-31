@@ -18,7 +18,7 @@ const doctorSchema = yup.object().shape({
   gender: yup.string().oneOf(["Male", "Female", "Other"], "Invalid gender").required(),
   email: yup.string().email("Invalid email address").required(),
   profile: yup.mixed().test("fileSize", "File is required", (value:any) => value?.length > 0).required(),
-  userType: yup.string().oneOf(["Doctor", "Patient"], "Invalid User Type").required(),
+  userType: yup.string().oneOf(["doctor", "patient"], "Invalid User Type").required(),
 
 });
 
@@ -29,7 +29,7 @@ const patientSchema = yup.object().shape({
   contact: yup.string().matches(/\d{10}/, "Contact must be a 10-digit number").required(),
   age: yup.number().typeError("Age must be a number").min(18).max(100).required(),
   profile: yup.mixed().test("fileSize", "File is required", (value:any) => value?.length > 0).required(),
-  userType: yup.string().oneOf(["Doctor", "Patient"], "Invalid User Type").required(),
+  userType: yup.string().oneOf(["doctor", "patient"], "Invalid User Type").required(),
 });
 
 const UserRegister = () => {
@@ -42,11 +42,13 @@ const UserRegister = () => {
   });
 
    const registerFunction=async(data:any)=>{
+    console.log(data);
+    
     const formData :any =new FormData()
     formData.append("name",data.name)
     formData.append("email",data.email)
     formData.append("contact",data.contact)
-    formData.append("profile",data.profile)
+    formData.append("profile",data.profile[0])
     formData.append("gender",data.gender)
     formData.append("age",data.age)
     formData.append("userType",data.userType)
@@ -58,9 +60,10 @@ const UserRegister = () => {
     formData.append("address",data.address)
     formData.append("experience",data.experience)
 
+console.log(formData);
+
       const res=await userAuthRegister(formData)
-      
-      if(res?.code==200){
+      if(res?.code==201){
         swalFire("Auth",res.message,"success") 
       }else{  
         swalFire("Auth",res.message,"error")
@@ -68,8 +71,8 @@ const UserRegister = () => {
     }
   return (
     <>
-     <div className="row login-row px-3 my-bg-color1">
-        <div className="col-md-4 mx-auto my-bg-color2 text-light my-5 rounded-3 p-5">
+     <div className="row login-row px-5 my-bg-color1">
+        <div className="col-lg-6 mx-auto my-bg-color2 text-light my-5 rounded-3 p-5">
           <h2 className='my-color3 mb-4 fw-bold text-center'>Register</h2>
           <form onSubmit={handleSubmit((d:any)=>registerFunction(d))}>
          <div className="mb-4">
