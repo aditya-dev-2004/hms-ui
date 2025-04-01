@@ -87,7 +87,7 @@ const Layout = ({ children }: any) => {
             <DashboardNavbar sideNav={sideNav}/>
             <div className='row right-bottom bg-primary'>
               <div className="col-lg-12 p-0  bg-light" >
-                <DashboardContent/>
+                {/* <DashboardContent/> */}
                 {children}
               </div>
             </div>

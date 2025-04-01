@@ -5,6 +5,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import { userAuthRegister } from '@/Services';
 import { swalFire } from '@/Helpers/SwalFire';
+import Link from 'next/link';
 
 const doctorSchema = yup.object().shape({
   name: yup.string().min(2).max(50).required("Name is required"),
@@ -12,7 +13,7 @@ const doctorSchema = yup.object().shape({
   specialist: yup.string().min(2).max(100).required("Expertise is required"),
   qualifications: yup.string().min(2).max(100).required("Qualifications are required"),
   contact: yup.string().matches(/\d{10}/, "Contact must be a 10-digit number").required(),
-  experience: yup.number().typeError("Experience must be a number").min(1).max(50).required(),
+  experience: yup.string().required(),
   fees: yup.number().typeError("Fees must be a number").min(0).required(),
   address: yup.string().min(5).max(200).required("Address is required"),
   gender: yup.string().oneOf(["Male", "Female", "Other"], "Invalid gender").required(),
@@ -119,6 +120,12 @@ console.log(formData);
             <input {...register("profile")} className='myform-control form-control ps-0 text-light rounded-0 mt-1' type="file" id="profile" />
               {errors.profile && <div className="text-danger fw-bold">{errors.profile?.message}</div>}
             </div>
+          <div className="mb-4">
+          <div className="reset-div">
+          <Link href="/login" className='text-danger'>Already have An Account?</Link>
+           </div>
+          </div>
+          
 
             <input type="submit" value="Register" className='w-100 mx-auto d-block text-light my-btn-hover1 btn mt-4 my-bg-color1' />
           </>

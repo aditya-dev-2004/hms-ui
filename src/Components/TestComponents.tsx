@@ -6,23 +6,12 @@ import { increment, decrement } from "@/Redux/slices/counterSlice";
 const TestComponents = () => {
     const dispatch = useDispatch();
     const count = useSelector((state: any) => state.counter.count);
-    const user = useSelector((state: any) => state.auth.user);
+    const user = useSelector((state: any) => state.auth);
     const isAuthenticated = useSelector((state: any) => state.auth.isAuthenticated);
+    console.log(user,"jhkhukjh");
+    
     return (
-        <div>
-            {isAuthenticated ? (
-                <>
-                    <h2 className='btn btn-success'>Welcome, {user}</h2>
-                    <button className='btn btn-success' onClick={() => dispatch(logout())}>Logout</button>
-                </>
-            ) : (
-                <button className='btn btn-success' onClick={() => dispatch(login("John Doe"))}>Login</button>
-            )}
-            <hr />
-
-            <button className='btn btn-success me-2' onClick={() => dispatch(increment())}>+</button> {count}
-            <button className='btn btn-success ms-2' onClick={() => dispatch(decrement())}>-</button>
-        </div>
+       <h1>fdgh</h1>
     )
 }
 

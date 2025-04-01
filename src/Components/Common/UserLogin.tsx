@@ -5,29 +5,45 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import Link from 'next/link'; 
 import { userAuthLogin } from '@/Services'; 
-import { swalFire } from '@/Helpers/SwalFire'; 
-const schema = yup
+import { swalFire } from '@/Helpers/SwalFire';
+import {login} from '@/Redux/slices/authSlice' ;
+import { useDispatch ,useSelector} from 'react-redux';
+import { useRouter } from 'next/navigation';
+
+const UserLogin = () => {
+  const dispatch = useDispatch();
+  const router=useRouter();
+
+  const schema = yup
   .object()
   .shape({
     userType: yup.string().oneOf(["admin", "doctor", "patient"], "Invalid User type").required("User type is required"),
   email: yup.string().email("Invalid email address").required("Email is required"),
    password: yup.string().required().matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,16}$/, "Password must contain at least one uppercase letter, one lowercase letter, one number and one special character"),
   })
-const UserLogin = () => {
   const { register, handleSubmit, formState:{errors} } = useForm({
     resolver: yupResolver(schema),
   }); 
   
   const LoginFunction=async(data:any)=>{
     const res=await userAuthLogin(data)
-    console.log(res);
-    
+    console.log(res); 
     if(res?.code==200){
       swalFire("Auth",res.message,"success") 
+      dispatch(login(res?.data));
+      if(res?.data?.userType=='admin'){
+        router.push('/admin-userlist')  
+      }
+      
     }else{  
       swalFire("Auth",res.message,"error")
     } 
   }
+
+const test=useSelector((state:any)=>{
+  console.log(state);
+  
+})
   return (
     <>
     <div className="row login-row px-3 my-bg-color1">
@@ -55,11 +71,12 @@ const UserLogin = () => {
         {errors.password &&  <div className="text-danger fw-bold ">{errors.password?.message}</div>}
        </div>
        <div className="forget-reset-wrap d-flex justify-content-between ">
-        <div className="forget-div text-start">
-          <Link href="/forget-password"> Forget Password!</Link>
+        
+        <div className="reset-div text-end ">
+          <Link href="/register" className='text-danger'>Don't have An Account?</Link>
            </div>
-        <div className="reset-div text-end">
-          <Link href="/reset-password">Reset Password!</Link>
+           <div className="forget-div text-start">
+          <Link href="/forget-password"> Forget Password!</Link>
            </div>
        </div>
         <input type="submit" value="Login" className='w-100 mx-auto d-block text-light my-btn-hover1 btn mt-4 btn my-bg-color1'/>
