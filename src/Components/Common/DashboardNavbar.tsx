@@ -10,7 +10,7 @@ import { GoGear } from "react-icons/go";
 import { CiSearch } from "react-icons/ci";
 
 const DashboardNavbar = ({ sideNav }: any) => {
-    console.log(sideNav);
+ 
 
     const [show, setShow] = useState(false);
 

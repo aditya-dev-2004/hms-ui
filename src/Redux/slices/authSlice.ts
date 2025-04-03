@@ -1,13 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 // Initial state for authentication 
-const initialState = { 
-};
+const initialState =null;
 const authSlice = createSlice({
     name: "auth",
     initialState,
     reducers: {
         login: (state, action) => { 
-            state = action.payload;  
+            return action.payload;  
         },
         logout: (state) => { 
         },

@@ -33,6 +33,11 @@ const UserLogin = () => {
       dispatch(login(res?.data));
       if(res?.data?.userType=='admin'){
         router.push('/admin-userlist')  
+      }else if(res?.data?.userType=='doctor'){
+        router.push('/doctor-userlist')  
+      }
+      else if(res?.data?.userType=='patient'){
+        router.push('/patient-userlist')  
       }
       
     }else{  
