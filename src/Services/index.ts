@@ -10,3 +10,8 @@ export const userAuthRegister = async (payload: any) => {
     const response = await axios.post(`${BASEURL}/v1/api/register`, payload);
     return response?.data
 }
+
+export const userForgetPassService = async (payload: any) => {
+    const response = await axios.post(`${BASEURL}/v1/api/forget-password`, payload);
+    return response?.data
+}
