@@ -1,18 +1,14 @@
 'use client'
-import React from 'react'
-import { useSelector} from 'react-redux'
-const AdminUserListCom = () => {
-    const data=useSelector((state:any)=>state?.auth)
-
-
+import { userSession } from '@/Helpers/userSession';
+import { AdminWrap } from '@/HOC/AdminWrap';
+import React from 'react' 
+const AdminUserListCom = () => {  
   return (
     <h1>
-        {data?.name} <br />
-        {data?.email} <br />
-        {data?.jwtToken}
+         <h1>djkfgndn</h1>
 
     </h1>
   )
 }
 
-export default AdminUserListCom
+export default AdminWrap(AdminUserListCom)
