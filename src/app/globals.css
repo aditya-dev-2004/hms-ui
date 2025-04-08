@@ -201,9 +201,7 @@ color: rgba(255, 255, 255, 0.2);;
     color: black !important;
 }
 
- ::placeholder{
-    color:white !important;
-}
+ 
 
 .myform-select{
     background:transparent !important;border:none !important;border-bottom:1px solid white !important;
@@ -275,4 +273,24 @@ font-size: 20px;
     background-color: white;
     color: black;
     }
+
+    .department
+    {
+        background-color: white;
+    }
     
+    .btnhover:hover{
+        background-color: #3949AB !important;
+    }
+    .thead{
+        background-color: #1A237E !important;
+    }
+
+    .apointment
+{
+  background: #223a66 !important;
+}
+.button
+{
+  margin-left:300px !important;
+}
