@@ -49,15 +49,16 @@ const Navbar = () => {
   {
     liClass:"nav-item px-2 fw-semibold",
     aClass:"nav-link",
-    href:"/login",
-     name:"Login"
+    href:"/register",
+     name:"Register"
   },
   {
     liClass:"nav-item px-2 fw-semibold",
     aClass:"nav-link",
-    href:"/register",
-     name:"Register"
+    href:"/login",
+     name:"Login"
   },
+  
 
 ]
   return (

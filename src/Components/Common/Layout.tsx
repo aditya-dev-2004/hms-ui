@@ -1,9 +1,10 @@
 "use client";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import { GiHamburgerMenu } from "react-icons/gi";
-import { FaUserAlt } from "react-icons/fa";
-import { TbNewSection } from "react-icons/tb";
+import { GiHamburgerMenu, } from "react-icons/gi";
+import { FaUserAlt ,FaHandHoldingMedical} from "react-icons/fa";
+import { BiSolidInjection } from "react-icons/bi";
+import { TbNewSection } from "react-icons/tb";  
 import DashboardNavbar from "./DashboardNavbar";
 import { userSession } from "@/Helpers/userSession";
 
@@ -25,15 +26,29 @@ const Layout = ({ children }: any) => {
     },
   ];
   const doctorMenu: any = [
-    
+    {
+      title: "Appointments",
+      link: "/doctor-apprequest",
+      icon: <BiSolidInjection/>,
+    },
   ];
   const patientMenu: any = [
+    {
+      title: "Appointment",
+      link: "/patient-appointment",
+      icon: <FaHandHoldingMedical />,
+    },
     
   ];
 
   useEffect(() => {
     if(userData?.userType=='admin'){
       setSideNav(adminMenu)
+    }else if(userData?.userType=='patient'){
+      setSideNav(patientMenu)
+    }
+    else if(userData?.userType=='doctor'){
+      setSideNav(doctorMenu)
     }
   }, [userData]);
 

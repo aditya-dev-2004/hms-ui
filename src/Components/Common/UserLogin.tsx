@@ -34,10 +34,10 @@ const UserLogin = () => {
       if(res?.data?.userType=='admin'){
         router.push('/admin-userlist')  
       }else if(res?.data?.userType=='doctor'){
-        router.push('/doctor-userlist')  
+        router.push('/doctor-apprequest')  
       }
       else if(res?.data?.userType=='patient'){
-        router.push('/patient-userlist')  
+        router.push('/patient-appointment')  
       }
       
     }else{  

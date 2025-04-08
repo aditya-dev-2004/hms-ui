@@ -8,8 +8,7 @@ const authSlice = createSlice({
         login: (state, action) => { 
             return action.payload;  
         },
-        logout: (state) => { 
-        },
+        logout: (state) => null 
     },
 });
 // Export actions 

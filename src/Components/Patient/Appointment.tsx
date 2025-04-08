@@ -1,4 +1,5 @@
 "use client"
+import { PatientWrap } from "@/HOC/PatientWrap"
 import { yupResolver } from "@hookform/resolvers/yup"
 import { useForm } from "react-hook-form"
 import * as yup from 'yup'
@@ -15,7 +16,7 @@ const schema=yup
     time:yup.string().required()
 })
 
-function Appointment() {
+function PatientAppointment() {
     const {register,handleSubmit,formState:{errors}}=useForm({resolver:yupResolver(schema)})
   return (
   <>
@@ -85,4 +86,4 @@ function Appointment() {
   )
 }
 
-export default Appointment
+export default PatientWrap(PatientAppointment)
