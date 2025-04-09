@@ -1,7 +1,7 @@
 "use client"
 import { userSession } from "@/Helpers/userSession"
 import { PatientWrap } from "@/HOC/PatientWrap"
-import { getDepartmentService } from "@/Services"
+import { getDepartmentService, getdoctByDepartmentIDService } from "@/Services"
 import { yupResolver } from "@hookform/resolvers/yup"
 import { useEffect, useState } from "react"
 import { useForm } from "react-hook-form"
@@ -20,22 +20,40 @@ const schema = yup
     department: yup.string().required(),
   })
 function PatientAppointment() {
-  const [departmentarr,detDepartmentArr]=useState([])
-  const userData = userSession();  
-  
+  const [departmentarr, detDepartmentArr] = useState([]);
+  const [docterArr, setDoctorArr] = useState([])
+  const [slecteddepId, setSelectedDepartmentId] = useState(null)
+  const userData = userSession();
 
-  const { register, handleSubmit, setValue,formState: { errors } } = useForm({ resolver: yupResolver(schema) })
+
+  const { register, handleSubmit, setValue, formState: { errors } } = useForm({ resolver: yupResolver(schema) })
   const fetchDept = async () => {
     const res = await getDepartmentService(userData?.jwtToken);
     detDepartmentArr(res?.data)
   }
-  const t="fever aa rha h"
-  useEffect(() => {
-    setValue('patientId',userData?.id) 
-    fetchDept()
-  }, []) 
-  
 
+  const fetchDoctorByDeptId = async () => {
+    const res = await getdoctByDepartmentIDService(slecteddepId, userData?.jwtToken)
+    setDoctorArr(res?.data)
+  }
+  useEffect(() => {
+    if (slecteddepId) {
+      fetchDoctorByDeptId()
+    }
+  }, [slecteddepId])
+
+  useEffect(() => {
+    setValue('patientId', userData?.id)
+    fetchDept()
+  }, [])
+
+
+  const handleDepDropChange = (e: any) => {
+    setSelectedDepartmentId(e?.target?.value)
+  }
+
+  console.log(docterArr,"doctoer");
+  
   return (
     <>
       <form onSubmit={handleSubmit((data) => console.log(data))}>
@@ -50,58 +68,35 @@ function PatientAppointment() {
                 <div className="col-sm-6 mb-5"><span className="text-light">Patient Id</span>
                   <input type="text" {...register('patientId')} className="form-control" placeholder="Enter Your Name" />
                   {errors.patientId && <p className='text-danger'>{errors.patientId.message}</p>}
+                  <span className="text-light">Doctor Id</span>
 
-                
+                  <span className="text-light">Department Id</span>
+                  <select className="form-control"  {...register('doctorId')} onChange={(e: any) => handleDepDropChange(e)}>
+                    {docterArr?.map((item: any, index: any) => {
+                      return (
+                        <option key={index} value={item?.id}> {item?.name}</option>
+                      )
+                    })}
 
-                  <span className="text-light">disease</span>
-                  <input type="text" {...register('disease')} className="form-control" />
-                  {errors.disease && <p className='text-danger'>{errors.disease.message}</p>}
-
-                  <span className="text-light">Symptoms</span>
-                  <input type="text" {...register('symptoms')} className="form-control" />
-                  {errors.symptoms && <p className='text-danger'>{errors.symptoms.message}</p>}
-
-                  <span className="text-light">payment</span>
-                  <input type="text" {...register('payment')} className="form-control" />
-                  {errors.payment && <p className='text-danger'>{errors.payment.message}</p>}
-
-                  <span className="text-light">appointmentType</span>
-                  <input type="text" {...register('appointmentType')} className="form-control" />
-                  {errors.appointmentType && <p className='text-danger'>{errors.appointmentType.message}</p>}
-
+                  </select> 
+                  {errors.doctorId && <p className='text-danger'>{errors.doctorId.message}</p>}
                 </div>
                 <div className="col-sm-6 mb-5">
-                <span className="text-light">Department Id</span>
-                  <input type="number" className="form-control" {...register('departmentId')} placeholder="Enter Your departmentId" />
+                  <span className="text-light">Department Id</span>
+                  <select className="form-control"  {...register('departmentId')} onChange={(e: any) => handleDepDropChange(e)}>
+                    {departmentarr?.map((item: any, index: any) => {
+                      return (
+                        <option key={index} value={item?.id}> {item?.name}</option>
+                      )
+                    })}
+
+                  </select> 
                   {errors.departmentId && <p className='text-danger'>{errors.departmentId.message}</p>}
 
 
-                  <span className="text-light">Doctor Id</span>
-                  <input type="text" {...register('doctorId')} className="form-control" placeholder="Enter Tour doctorId" />
-                  {errors.doctorId && <p className='text-danger'>{errors.doctorId.message}</p>}
 
 
-                  <span className="text-light">Department</span>
-                  <select className="form-control">
-                    <option>Select Department</option>
-                    <option>Cardiology</option>
-                    <option>Dermatology</option>
-                    <option>Neurology</option>
-                    <option>Pediatrics</option>
-                    <option>Orthopedics</option>
-                  </select>
-                  {errors.department && <p className='text-danger'>{errors.department.message}</p>}
-                  <span className="text-light">Select Date</span>
-                  <input type="date" className="form-control" />
-                  {errors.date && <p className='text-danger'>{errors.date.message}</p>}
 
-
-                  <span className="text-light">startTime</span>
-                  <input type="date"{...register('startTime')} className="form-control" />
-                  {errors.startTime && <p className='text-danger'>{errors.startTime.message}</p>}
-
-
-                  <span className="text-light">Gender</span>
 
                 </div>
 
