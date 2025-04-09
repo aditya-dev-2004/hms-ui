@@ -17,7 +17,6 @@ const schema = yup
     appointmentType: yup.string().required(),
     date: yup.string().required(),
     startTime: yup.string().required(),
-    department: yup.string().required(),
   })
 function PatientAppointment() {
   const [departmentarr, detDepartmentArr] = useState([]);
@@ -52,8 +51,8 @@ function PatientAppointment() {
     setSelectedDepartmentId(e?.target?.value)
   }
 
-  console.log(docterArr,"doctoer");
-  
+  console.log(docterArr, "doctoer");
+
   return (
     <>
       <form onSubmit={handleSubmit((data) => console.log(data))}>
@@ -78,8 +77,20 @@ function PatientAppointment() {
                       )
                     })}
 
-                  </select> 
+                  </select>
                   {errors.doctorId && <p className='text-danger'>{errors.doctorId.message}</p>}
+
+                  <span className="text-light">Disease</span>
+                  <input type="text" {...register('disease')} className="form-control" placeholder="Enter Your disease" />
+                  {errors.disease && <p className='text-danger'>{errors.disease.message}</p>}
+
+                  <span className="text-light">Date</span>
+                  <input type="date" {...register('date')} className="form-control" placeholder="Enter Your date" />
+                  {errors.date && <p className='text-danger'>{errors.date.message}</p>}
+                  <span className="text-light">StartTime</span>
+                  <input type="time" {...register('startTime')} className="form-control" placeholder="Enter Your startTime" />
+                  {errors.startTime && <p className='text-danger'>{errors.startTime.message}</p>}
+
                 </div>
                 <div className="col-sm-6 mb-5">
                   <span className="text-light">Department Id</span>
@@ -90,8 +101,22 @@ function PatientAppointment() {
                       )
                     })}
 
-                  </select> 
+                  </select>
                   {errors.departmentId && <p className='text-danger'>{errors.departmentId.message}</p>}
+
+                  <span className="text-light">symptoms</span>
+                  <input type="text" {...register('symptoms')} className="form-control" placeholder="Enter Your symptoms" />
+                  {errors.symptoms && <p className='text-danger'>{errors.symptoms.message}</p>}
+                  <span className="text-light">AppointmentType</span>
+                  <select {...register('appointmentType')} className="form-control">
+                    <option>General</option>
+                    <option>Emergency</option>
+                  </select>
+                  {errors.appointmentType && <p className='text-danger'>{errors.appointmentType.message}</p>}
+                  <span className="text-light">payment</span>
+                  <input type="text" {...register('payment')} className="form-control" placeholder="Enter Your payment" />
+                  {errors.payment && <p className='text-danger'>{errors.payment.message}</p>}
+                 
 
 
 
