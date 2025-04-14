@@ -1,8 +1,11 @@
 "use client"
+import { swalFire } from "@/Helpers/SwalFire"
 import { userSession } from "@/Helpers/userSession"
 import { PatientWrap } from "@/HOC/PatientWrap"
-import { getDepartmentService, getdoctByDepartmentIDService } from "@/Services"
-import { yupResolver } from "@hookform/resolvers/yup"
+import { appoinmentBookService, getDepartmentService, getdoctByDepartmentIDService } from "@/Services"
+import { yupResolver } from "@hookform/resolvers/yup" 
+import { useRouter } from "next/navigation"
+ 
 import { useEffect, useState } from "react"
 import { useForm } from "react-hook-form"
 import * as yup from 'yup'
@@ -23,7 +26,7 @@ function PatientAppointment() {
   const [docterArr, setDoctorArr] = useState([])
   const [slecteddepId, setSelectedDepartmentId] = useState(null)
   const userData = userSession();
-
+const router=useRouter()
 
   const { register, handleSubmit, setValue, formState: { errors } } = useForm({ resolver: yupResolver(schema) })
   const fetchDept = async () => {
@@ -51,11 +54,24 @@ function PatientAppointment() {
     setSelectedDepartmentId(e?.target?.value)
   }
 
-  console.log(docterArr, "doctoer");
+  const appoinmentBookSubmit = async (data: any) => {
+    const res = await appoinmentBookService(userData?.jwtToken, data);
+    if (res?.code == 201) {
+      swalFire("Appointment ",res.message, "success")
+    } else if (res.code==401) {
+      swalFire("Appointment ",res.message, "error")
+      router.push('/login')
+    }
+    else {
+      swalFire("Appointment", res.message, "error")
+    }
+  }
 
+  console.log(docterArr,"er5yhiuerytuiey");
+  
   return (
     <>
-      <form onSubmit={handleSubmit((data) => console.log(data))}>
+      <form onSubmit={handleSubmit((data) => appoinmentBookSubmit(data))}>
         <div className="container-fluid">
           <div className="row">
             <div className="col-sm-2"></div>
@@ -70,10 +86,11 @@ function PatientAppointment() {
                   <span className="text-light">Doctor Id</span>
 
                   <span className="text-light">Department Id</span>
-                  <select className="form-control"  {...register('doctorId')} onChange={(e: any) => handleDepDropChange(e)}>
+                  <select className="form-control"  {...register('doctorId')}>
+                    <option>Select Doctor</option>
                     {docterArr?.map((item: any, index: any) => {
                       return (
-                        <option key={index} value={item?.id}> {item?.name}</option>
+                        <option className="t" key={index} value={item?.id}> {item?.name}</option>
                       )
                     })}
 
@@ -116,7 +133,7 @@ function PatientAppointment() {
                   <span className="text-light">payment</span>
                   <input type="text" {...register('payment')} className="form-control" placeholder="Enter Your payment" />
                   {errors.payment && <p className='text-danger'>{errors.payment.message}</p>}
-                 
+
 
 
 
@@ -140,3 +157,7 @@ function PatientAppointment() {
 }
 
 export default PatientWrap(PatientAppointment)
+
+function dispatch(arg0: any) {
+  throw new Error("Function not implemented.")
+}
